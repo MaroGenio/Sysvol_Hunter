@@ -1,7 +1,7 @@
 # Sysvol_Hunter
 Automating Exploitation Of Sysvol Password Weakness
 
-#Requirement :
+#Requirements :
  - Pycrypto
  - BeautifulSoup
  
