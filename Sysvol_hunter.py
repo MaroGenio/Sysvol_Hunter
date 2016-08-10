@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-#title           :Sysvol Hunter
-#description     :Automate finding and cracking sysvol passwords
-#author          :Marouane El-ANBRI (Iron Geek)
-#python_version  :2.7.x
+#title           : Sysvol Hunter
+#description     : Automate finding and cracking sysvol passwords
+#author          : Marouane El-ANBRI (Iron Geek)
+#python_version  : 2.7.x
 #Usage           : python sys_hunter.py
  
 import os
