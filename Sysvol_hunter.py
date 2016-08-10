@@ -3,7 +3,7 @@
 #description     : Automate finding and cracking sysvol passwords
 #author          : Marouane El-ANBRI (Iron Geek)
 #python_version  : 2.7.x
-#Usage           : python sys_hunter.py
+#Usage           : python sysvol_hunter.py
  
 import os
 import re
