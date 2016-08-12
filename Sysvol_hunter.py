@@ -54,7 +54,7 @@ for f_name,f_dir in zip(name,path):
             user_name= prop_tag.attrs['userName']
             cpass = prop_tag.attrs['cpassword']
             fn=decrypter(cpass)
-            print "[+] User Name Found    : %s" %user_name
+            print "[+] UserName Found     : %s" %user_name
             print "[+] CPassword Found    : %s" %cpass
             print "[+] Password Decrypted : %s" %fn
         else:
