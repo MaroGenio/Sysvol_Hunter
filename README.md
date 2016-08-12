@@ -6,6 +6,6 @@ Automating Exploitation Of Sysvol Password Weakness
  - BeautifulSoup
  
 #Usage : 
-$ python Sysvol_Hunter.py
+$ python Sysvol_Hunter.py DOMAIN_CONTROLLER_IP
 
 
