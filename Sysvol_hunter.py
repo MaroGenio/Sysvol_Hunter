@@ -47,9 +47,8 @@ for f_name,f_dir in zip(name,path):
         soup_vol = BeautifulSoup(sysvol_file, features="xml")
         prop_tag = soup_vol.Properties
         group_tag = soup_vol.Groups
-        prop_tag = soup_vol.Properties
         
-        if group_tag != None :
+        if prop_tag != None and group_tag != None :
             print "\n[+] %s Contains Password" %f_name
             user_name= prop_tag.attrs['userName']
             cpass = prop_tag.attrs['cpassword']
