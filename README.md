@@ -1,5 +1,5 @@
 # Sysvol_Hunter
-Automating Exploitation Of Sysvol Password Weakness
+A Tool to exploit MS14-025 Sysvol Vulnerability 
 
 #Requirements :
  - Pycrypto
